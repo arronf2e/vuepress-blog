@@ -7,7 +7,7 @@ module.exports = {
     nav: [
       { text: '首页', link: '/', exact: true },
       { text: '文章', link: '/posts/', exact: false },
-      // { text: 'Custom Pages', link: '/custom-pages/', exact: false },
+      { text: '关于我', link: '/about/', exact: false },
       { text: 'Github', link: 'https://github.com/arronf2e' },
     ],
     // 是否显示页面中的文章标题
