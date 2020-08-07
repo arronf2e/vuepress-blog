@@ -69,3 +69,14 @@ var 变量名 变量类型
 ## Go 语言中的常量
 
 使用 const 定义，且定义时<b style="color: red;">必须初始化。</b>
+
+[![aWl8R1.png](https://s1.ax1x.com/2020/08/07/aWl8R1.png)](https://imgchr.com/i/aWl8R1)
+
+## iota
+
+常量计数器，所以只能用 const 来定义，有以下几个特点：
+- 定义连续的整数常数：0，1，2...
+- 每当出现 const 定义，iota 的值都会重置为 0
+- const 中每新增一行，iota的计数就 + 1
+
+![aWGMOx.png](https://s1.ax1x.com/2020/08/07/aWGMOx.png)
