@@ -2,7 +2,7 @@
 category: 大前端
 tags:
   - JavaScript
-date: 2018-02-01
+date: 2017-02-01
 title: JavaScript基本数据类型
 vssue-title: JavaScript基本数据类型
 # draft: true 草稿标识
