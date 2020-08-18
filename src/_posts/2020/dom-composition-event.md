@@ -21,40 +21,9 @@ DOM接口的 CompositionEvent 表示用户间接输入文本（比如使用中�
 
 ## Demo
 
-<p>调试日志：</p>
-<div id='log'>
-  
-</div>
-
-<input placeholder='在这里输入测试Composition事件' id='input'/>
-
-
-<script>
-  window.onload = function() {
-    const input = document.getElementById('input')
-    const logger = document.getElementById('log')
-    console.log(input)
-    input.addEventListener('compositionstart', function(e){
-      console.log('compositionstart', e)
-      insertLog('触发compositionstart事件')
-    }, false)
-    input.addEventListener('compositionupdate', function(e){
-      console.log('compositionupdate', e)
-      insertLog('触发compositionupdate事件，输入值为：' +　e.data)
-    }, false)
-    input.addEventListener('compositionend', function(e){
-      console.log('compositionend', e)
-      insertLog('触发compositionend事件，最终输入值为：' + e.data)
-    }, false)
-    input.addEventListener('input', function(e){
-      console.log('input', e)
-      insertLog('触发input事件')
-    }, false)
-
-    function insertLog(info){
-      const p = document.createElement('p')
-      p.innerHTML = info
-      logger.appendChild(p)
-    }
-  }
-</script>
+<iframe src="https://codesandbox.io/embed/sweet-jackson-cqckw?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="sweet-jackson-cqckw"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
