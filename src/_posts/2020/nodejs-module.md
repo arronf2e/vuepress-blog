@@ -22,4 +22,23 @@ draft: true 草稿标识
 ```js
 const fs = require('fs')
 ```
+我们通过 require() 方法来引入一个模块，参数的话就是模块标识。
 
+
+### 2. 模块定义
+
+```js
+// moduleA.js
+export.sayHello = function() {
+  return 'hello world'
+}
+
+// index.js
+const moduleA = require('./moduleA')
+const message = moduleA.sayHello()  
+console.log(message)// 'hello world'
+```
+
+### 3. 模块标识
+
+上面我们也提过了，模块标识就是传给 require() 方法的参数

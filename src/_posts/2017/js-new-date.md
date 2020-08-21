@@ -1,7 +1,7 @@
 ---
 category: 大前端
 tags:
-  - JavsScript
+  - JavaScript
 date: 2017-05-30
 title: Safari new Date()填坑记
 vssue-title: Safari new Date()填坑记
