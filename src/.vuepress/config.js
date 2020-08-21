@@ -3,14 +3,6 @@ module.exports = {
   description: '记录自己的技术成长与生活',
   theme: 'meteorlxy',
 
-  head: [
-    ['script', { 
-      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-      async: true,
-      'data-ad-client': 'ca-pub-9517100845012132'
-    }]
-  ],
-
   plugins: [
     ['@vuepress/google-analytics', {
       ga: 'UA-169905882-1',
