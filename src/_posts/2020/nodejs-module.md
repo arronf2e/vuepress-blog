@@ -13,5 +13,13 @@ draft: true 草稿标识
 
 <!-- more -->
 
-# 模块
+## CommonJS规范
+
+要说 Nodejs 的模块机制，得先了解一下 CommonJS 的模块规范。CommonJS 对模块的定义不算复杂，主要分模块引用、模块定义、模块标识三大部分。
+
+### 1. 模块引用 
+
+```js
+const fs = require('fs')
+```
 

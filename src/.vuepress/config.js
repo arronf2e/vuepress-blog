@@ -15,6 +15,9 @@ module.exports = {
     ['@vuepress/google-analytics', {
       ga: 'UA-169905882-1',
     }],
+    ['vuepress-plugin-google-adsense', {
+      ad_client: 'ca-pub-9517100845012132'
+    }]
   ],
 
   themeConfig: {
