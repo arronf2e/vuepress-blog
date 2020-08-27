@@ -3,9 +3,9 @@ category: 大前端
 tags:
   - nodejs
 date: 2020-08-13
-title: Nodejs 学习笔记 —— 模块机制
-vssue-title: Nodejs 学习笔记 —— 模块机制
-draft: true 草稿标识
+title: Nodejs 学习笔记 —— 模块机制的学习
+vssue-title: Nodejs 学习笔记 —— 模块机制的学习
+# draft: true 草稿标识
 # top: true 置顶文章标识
 ---
 
@@ -61,9 +61,50 @@ Nodejs 会对引入过的模块进行缓存，这样可以有效的减少二次�
 
 ### 2. 路径分析与文件定位
 
-#### 2.1 模块标识符分析
+#### 2.1 模块标识符
 
 模块标识符在 Nodejs 中主要分几类：
 - 核心模块，如 fs、path、http等
 - 以.、..开始的相对路径 
 - 以/开始的绝对路径
+- 非路径形式的文件模块，如 npm 中的各自定义模块
+
+#### 2.2 文件定位
+
+- 1. 文件扩展名分析  
+在使用 require() 方法引入模块的时候，会经常省略文件扩展名，这种情况下 Nodejs 会按照 .js、.json、.node的顺序补充扩展示，依次尝试查找模块，尝试过程使用 fs 模块同步判断文件是否存在，这样的话会带来性能问题，如果引入 .json、.node的文件的话，我们可以加上后缀，提升一个查找的速度。
+
+- 2. 目录分析与包  
+如果在第一步中没有查找到相应的模块，则文件标识符会被当做目录。这时候 Node 会在当前目录下查找 package.json文件，然后通过 JSON.parse() 解析出包描述对象，取出 main 属性指定的文件名进行定位查找，如果没有 package.jons 文件，Node会把 index 当做默认文件名，依次查找 index.js 、index.json、index.node。
+
+
+### 3. 模块编译
+
+编译与执行是引入模块的最后一个阶段，定位到具体的文件之后，Node会新建一个模块对象，然后根据路径载入并编译。模块对象的定义如下：
+
+```js
+function Module(id, parent) {
+  this.id = id
+  this.exports = {}
+  this.parent = parent
+  if(parent && parent.children) {
+    parent.children.push(this)
+  }
+  this.filename = null
+  this.loaded = false
+  this.children = []
+}
+```
+
+JS模块在编译过程中， Node 会对获取的 JavsScript 文件内容进行头尾包装：
+
+```js
+(function(exports, require, module, __filename, __dirname) {
+  var test = require('test')
+  exports.test = function() {
+    return 'hello test'
+  }
+})
+```
+
+通过这种包装的方式，就可以做到每个模块之间的作用域隔离，执行之后，模块的 exports 属性被返回给了调用方，exports 上的任何属性和方法都可以被外部调用，但是模块中的其他属性及变量不可直接被调用。
