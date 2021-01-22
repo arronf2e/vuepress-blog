@@ -13,6 +13,7 @@
     "vuepress-plugin-google-adsense": "^0.1.0"
   },
   "dependencies": {
+    "vue-embed-gist": "^1.1.0",
     "vuepress-theme-meteorlxy": "^1.9.0"
   }
 }
